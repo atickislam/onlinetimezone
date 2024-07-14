@@ -1,0 +1,52 @@
+1<!-- HTML -->
+<div class="clock">
+  <span id="hours">00</span>:
+  <span id="minutes">00</span>:
+  <span id="seconds">00</span>
+  <span id="ampm">AM</span>
+</div>
+
+<!-- CSS -->
+<style>
+ .clock {
+    font-size: 100px;
+    font-weight: bold;
+    margin: 200px;
+   .container 
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 15vh;
+     background-color: #FF4676;(0, 0, 0, 0.5);
+   
+  }
+</style>
+
+<!-- JavaScript -->
+<script>
+  const clock = document.querySelector('.clock');
+  const hoursElement = document.querySelector('#hours');
+  const minutesElement = document.querySelector('#minutes');
+  const secondsElement = document.querySelector('#seconds');
+  const ampmElement = document.querySelector('#ampm');
+
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const ampm = hours >= 12? 'PM' : 'AM';
+
+    hoursElement.innerHTML = pad(hours % 12 || 12);
+    minutesElement.innerHTML = pad(minutes);
+    secondsElement.innerHTML = pad(seconds);
+    ampmElement.innerHTML = ampm;
+  }
+
+  function pad(number) {
+    return (number < 10? '0' : '') + number;
+  }
+
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
